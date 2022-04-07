@@ -1,32 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link rel="stylesheet" href="{% static 'qa_system/reset.css' %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'qa_system/form.css' %}">    
     <title>Multi-type question answering system</title>
-    <style>
-        table {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        td {
-          border: 1px solid #000000;
-          text-align: left;
-          padding: 8px;
-        }
-        
-        th {
-            border: 1px solid #000000;
-            text-align: center;
-            padding: 8px;
-            background-color: #91e9cd;
-        }
-    </style>
 </head>
-<body style="font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; padding: 4rem 2rem; direction: ltr">
+<body>
     <div>
         <h1>Multi-type question answering system</h1>
     </div>
@@ -39,10 +22,10 @@
             </div>
             <div>
                 {% if information_cache %}
-                    <input type="text", name='textfield', value={{information_cache}}>
+                    <input type="text", id="information", name='textfield', value={{information_cache}}>
                 {% endif %}
                 {% if not information_cache %}
-                    <input type="text", name='textfield' placeholder="Write medical report">
+                    <input type="text", id="information", name='textfield' placeholder="Write medical report">
                 {% endif %}
             </div>
             <div>
@@ -50,10 +33,10 @@
             </div>
             <div>
                 {% if question_cache %}
-                    <input type="text", name='questionfield', value={{question_cache}}>
+                    <input type="text", id="question", name='questionfield', value={{question_cache}}>
                 {% endif %}
                 {% if not question_cache %}
-                    <input type="text", name='questionfield' placeholder="Write question">
+                    <input type="text", id="question", name='questionfield' placeholder="Search...">
                 {% endif %} 
             </div>
             <br>
@@ -101,31 +84,8 @@
                         <strong>Score: </strong>{{score}}
                     </div>                    
                 </div>    
-                <div>
-                    <div>
-                        <legend><h1>Entities:</h1></legend>
-                    </div>  
-                    <div>
-                        <div>
-                            <strong>Modelo '{{model1_name}}': <a href="{% url 'qa_system:displacy1_view' %}" target="_blank" rel="noopener noreferrer">NER visualization</a>.</strong>
-                            {% for entity in entities1 %}
-                                <li><p>{{entity}}</p></li>                          
-                            {% endfor %}  
-                        </div>   
-                        <div>
-                            <strong>Modelo '{{model2_name}}': <a href="{% url 'qa_system:displacy2_view' %}" target="_blank" rel="noopener noreferrer">NER visualization</a>.</strong>
-                                {% for entity in entities2 %}
-                                    <li><p>{{entity}}</p></li>                          
-                                {% endfor %}   
-                        </div> 
-                        <div>
-                            <strong>Modelo '{{model3_name}}': <a href="{% url 'qa_system:displacy3_view' %}" target="_blank" rel="noopener noreferrer">NER visualization</a>.</strong>
-                            {% for entity in entities3 %}
-                                <li><p>{{entity}}</p></li>                          
-                            {% endfor %}                 
-                        </div>  
-                    </div>
-                </div>  
+                <br>
+                <br> 
                 
                 <table class="default">
 

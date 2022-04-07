@@ -1,0 +1,51 @@
+body {
+    font-size: 16px; font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; 
+    padding: 4rem 2rem; 
+    direction: ltr;
+}
+table {
+    /*font-family: arial, sans-serif;*/
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 8px;
+    background-color: #91e9cd;
+}
+
+#information {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;            
+}
+
+#question {
+    
+    height: 40px;
+    padding-left: 40px; 
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;   
+    background-image: white url("images/searchicon.png") no-repeat;
+    background-position: 10px 10px;
+    transition-timing-function: width 2s ease-in-out;       
+}  
+#question:focus {
+    width: 40%;
+}   
