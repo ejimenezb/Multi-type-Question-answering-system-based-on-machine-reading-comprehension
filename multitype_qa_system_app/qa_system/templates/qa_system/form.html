@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-type question answering system</title>
+</head>
+<body>
+    <div>
+        <h1>Multi-type question answering system</h1>
+    </div>
+    <form action="{% url 'qa_system:algorithm' %}" method="post">
+        {% csrf_token %}
+        <div>
+        <ul>
+            <div>
+                <legend><h1>Medical Record:</h1></legend>
+            </div>
+            <div>
+                {% if information_cache %}
+                    <input type="text", name='textfield', value={{information_cache}}>
+                {% endif %}
+                {% if not information_cache %}
+                    <input type="text", name='textfield'>
+                {% endif %}
+            </div>
+            <div>
+                <legend><h1>Question:</h1></legend>
+            </div>
+            <div>
+                {% if question_cache %}
+                    <input type="text", name='questionfield', value={{question_cache}}>
+                {% endif %}
+                {% if not question_cache %}
+                    <input type="text", name='questionfield'>
+                {% endif %} 
+            </div>
+            <br>
+            {% comment %} <fieldset><input type="submit", value='Submit'></fieldset> {% endcomment %}
+            <button type="submit">Submit</button>
+            
+            {% if error_message %}
+                <p><strong>{{error_message}}</strong></p>
+            {% endif %}             
+            
+            {% if answer %}
+                <div>
+                    <legend><h1>Answer:</h1></legend>
+                </div>        
+                <div>
+                    {{answer}}
+                </div>
+            {% endif %}
+        </ul>
+        </div>
+    </form>
+</body>
+</html>
