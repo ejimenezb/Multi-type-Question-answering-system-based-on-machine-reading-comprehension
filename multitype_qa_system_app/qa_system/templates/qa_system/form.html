@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-type question answering system</title>
 </head>
-<body>
+<body style="font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; padding: 4rem 2rem; direction: ltr">
     <div>
         <h1>Multi-type question answering system</h1>
     </div>
@@ -22,7 +22,7 @@
                     <input type="text", name='textfield', value={{information_cache}}>
                 {% endif %}
                 {% if not information_cache %}
-                    <input type="text", name='textfield'>
+                    <input type="text", name='textfield' placeholder="Write medical report">
                 {% endif %}
             </div>
             <div>
@@ -33,7 +33,7 @@
                     <input type="text", name='questionfield', value={{question_cache}}>
                 {% endif %}
                 {% if not question_cache %}
-                    <input type="text", name='questionfield'>
+                    <input type="text", name='questionfield' placeholder="Write question">
                 {% endif %} 
             </div>
             <br>
@@ -46,11 +46,110 @@
             
             {% if answer %}
                 <div>
-                    <legend><h1>Answer:</h1></legend>
-                </div>        
+                    <div>
+                        <legend><h1>Context:</h1></legend>
+                    </div> 
+                    <div>
+                        <figure style="margin-bottom: 1rem">
+                            <div class="entities" style="line-height: 2.5; direction: ltr">                        
+                                <p>
+                                    {{contextp1}}
+                                    <mark class="entity" style="background: #aa9cfc; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+                                        <strong>{{answer}}</strong>
+                                    </mark>
+                                    {{contextp2}}
+                                </p>
+                            </div>
+                        </figure>                            
+                    </div>     
+                    <div>
+                        <legend><h1>Answer:</h1></legend>
+                    </div>        
+                    <div>
+                        <strong>{{answer}}</strong>
+                    </div>
+                    <br>
+                    <div>
+                        <strong>Start: </strong>{{start_point}}
+                    </div>
+                    <br>
+                    <div>
+                        <strong>End: </strong>{{end_point}}
+                    </div>                      
+                    <br>                      
+                    <div>
+                        <strong>Score: </strong>{{score}}
+                    </div>                    
+                </div>    
                 <div>
-                    {{answer}}
-                </div>
+                    <div>
+                        <legend><h1>Entities:</h1></legend>
+                    </div>  
+                    <div>
+                        <div>
+                            <strong>Modelo '{{model1_name}}': <a href="{% url 'qa_system:displacy1_view' %}" target="_blank" rel="noopener noreferrer">NER visualization</a>.</strong>
+                            {% for entity in entities1 %}
+                                <li><p>{{entity}}</p></li>                          
+                            {% endfor %}  
+                        </div>   
+                        <div>
+                            <strong>Modelo '{{model2_name}}': <a href="{% url 'qa_system:displacy2_view' %}" target="_blank" rel="noopener noreferrer">NER visualization</a>.</strong>
+                                {% for entity in entities2 %}
+                                    <li><p>{{entity}}</p></li>                          
+                                {% endfor %}   
+                        </div> 
+                        <div>
+                            <strong>Modelo '{{model3_name}}': <a href="{% url 'qa_system:displacy3_view' %}" target="_blank" rel="noopener noreferrer">NER visualization</a>.</strong>
+                            {% for entity in entities3 %}
+                                <li><p>{{entity}}</p></li>                          
+                            {% endfor %}                 
+                        </div>  
+                    </div>
+                </div>  
+                
+                <table class="default">
+
+                    <tr>
+                  
+                      <th></th>
+                  
+                      <th>Día 1</th>
+                  
+                      <th>Día 2</th>
+                  
+                      <th>Día 3</th>
+                  
+                      <th>Día 4</th>
+                  
+                    </tr>
+                  
+                    <tr>
+                  
+                      <th>Mike (lastimado)</th>
+                  
+                      <td colspan="3">0 km</td>
+                  
+                      <td>4 km</td>
+                  
+                    </tr>
+                  
+                    <tr>
+                  
+                      <th>Susan</th>
+                  
+                      <td>23 km</td>
+                  
+                      <td>18 km</td>
+                  
+                      <td>19 km</td>
+                  
+                      <td>15 km</td>
+                  
+                    </tr>
+                  
+                  </table>                
+
+
             {% endif %}
         </ul>
         </div>

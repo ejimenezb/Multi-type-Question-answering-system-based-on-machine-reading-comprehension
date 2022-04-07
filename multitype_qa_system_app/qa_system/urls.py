@@ -7,6 +7,9 @@ urlpatterns = [
     #ex: /qa/
     path("",views.form, name="form"), 
     path("algorithm/",views.algorithm, name="algorithm"), 
+    path("displacy1/",views.displacy1_view, name="displacy1_view"), 
+    path("displacy2/",views.displacy2_view, name="displacy2_view"), 
+    path("displacy3/",views.displacy3_view, name="displacy3_view"), 
 
     # #ex: /polls/
     # path("", views.IndexView.as_view(), name="index"), # views.index
