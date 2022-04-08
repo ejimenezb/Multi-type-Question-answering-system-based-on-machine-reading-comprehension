@@ -10,61 +10,96 @@
     <title>Multi-type question answering system</title>
 </head>
 <body>
-    <div>
-        <h1>Multi-type question answering system</h1>
+    <div id="box_presentation">
+        <table class="table_invisible">
+            <tr class="table_invisible">
+                <td class="table_invisible">
+                    <div id="content_presentation">
+                        <h1>Beijing Institute of Technology BIT</h1><br>
+                        <strong>Computer Science and technology master degree </strong><br>
+                        <strong>Student <a href="https://www.linkedin.com/in/eladiorjb/" target="_blank" rel="noopener noreferrer">Jimenez Eladio 艾伦</a> 3820201063</strong><br>
+                        <strong>Professor 吴昊 </strong>
+                    </div>
+                </td>
+                <td class="table_invisible">
+                    <div id="logo">
+                        <a href="https://english.bit.edu.cn/" target="_blank" rel="noopener noreferrer">
+                            <img src="images/bit.png" alt="bit"/>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="box_title">
+        <h1>Multi-type question answering system in medical field based on machine reading comprehension</h1>
     </div>
     <form action="{% url 'qa_system:algorithm' %}" method="post">
         {% csrf_token %}
-        <div>
+        <div >
         <ul>
-            <div>
-                <legend><h1>Medical Record:</h1></legend>
+            <div id="box_question">
+                <div>
+                    <legend><h1>Medical Record:</h1></legend>
+                </div>
+                <div>
+                    {% if information_cache %}
+                        {% comment %} <input type="text", class="information", name='textfield', value={{information_cache}}> {% endcomment %}
+                        <textarea name="textfield" class="information" cols="30" rows="10">{{information_cache}}</textarea>
+                    {% endif %}
+                    {% if not information_cache %}
+                        {% comment %} <input type="text", class="information", name='textfield' placeholder="Write medical report"> {% endcomment %}
+                        <textarea name="textfield" class="information" cols="30" rows="10" placeholder="Write medical record"></textarea>
+                    {% endif %}
+                </div>
+                <div>
+                    <legend><h1>Question:</h1></legend>
+                </div>
+                <div>
+                    {% if question_cache %}
+                        <input type="text", class="question", name='questionfield', value={{question_cache}}>
+                        {% comment %} <textarea name="questionfield" cols="30" rows="1" class="question" >{{question_cache}}</textarea> {% endcomment %}
+                    {% endif %}
+                    {% if not question_cache %}
+                        <input type="text", class="question", name='questionfield' placeholder="Search...">
+                        {% comment %} <textarea name="questionfield" cols="30" rows="1" class="question" placeholder="Search..."></textarea> {% endcomment %}
+                    {% endif %} 
+                </div>
+                <br>
+                {% comment %} <fieldset><input type="submit", value='Submit'></fieldset> {% endcomment %}
+                <button type="submit">Submit</button>
             </div>
-            <div>
-                {% if information_cache %}
-                    <input type="text", id="information", name='textfield', value={{information_cache}}>
-                {% endif %}
-                {% if not information_cache %}
-                    <input type="text", id="information", name='textfield' placeholder="Write medical report">
-                {% endif %}
-            </div>
-            <div>
-                <legend><h1>Question:</h1></legend>
-            </div>
-            <div>
-                {% if question_cache %}
-                    <input type="text", id="question", name='questionfield', value={{question_cache}}>
-                {% endif %}
-                {% if not question_cache %}
-                    <input type="text", id="question", name='questionfield' placeholder="Search...">
-                {% endif %} 
-            </div>
-            <br>
-            {% comment %} <fieldset><input type="submit", value='Submit'></fieldset> {% endcomment %}
-            <button type="submit">Submit</button>
-            
+
             {% if error_message %}
                 <p><strong>{{error_message}}</strong></p>
             {% endif %}             
             
             {% if answer %}
-                <div>
+                <div id='box_answer'>
                     <div>
                         <legend><h1>Context:</h1></legend>
                     </div> 
                     <div>
-                        <figure style="margin-bottom: 1rem">
-                            <div class="entities" style="line-height: 2.5; direction: ltr">                        
+                        <figure class="entity_fig">
+                            <div class="entity_div">                        
                                 <p>
                                     {{contextp1}}
-                                    <mark class="entity" style="background: #aa9cfc; padding: 0.45em 0.6em; margin: 0 0.25em; line-height: 1; border-radius: 0.35em;">
+                                    <mark class="entity_mark" >
                                         <strong>{{answer}}</strong>
                                     </mark>
                                     {{contextp2}}
                                 </p>
                             </div>
                         </figure>                            
-                    </div>     
+                    </div>  
+                    <div>
+                        <legend><h1>Question:</h1></legend>
+                    </div>        
+                    <div>
+                        <strong>{{question_cache}}</strong>
+                    </div>
+                    <br>                       
                     <div>
                         <legend><h1>Answer:</h1></legend>
                     </div>        
@@ -83,32 +118,19 @@
                     <div>
                         <strong>Score: </strong>{{score}}
                     </div>                    
-                </div>    
-                <br>
-                <br> 
-                
-                <table class="default">
+                </div> 
 
+                <table>
                     <tr>
-                  
-                      <th rowspan="2">Answer</th>
-                  
-                      <th colspan="3">NER models</th>
-                  
+                      <th rowspan="2" id='th_up1'>Answer</th>
+                      <th colspan="3" id='th_up2'>NER models</th>
                     </tr>
-                  
                     <tr>
-                  
                       <th><a href="{% url 'qa_system:displacy1_view' %}" target="_blank" rel="noopener noreferrer">{{model1_name}}</a></th>
-                  
                       <th><a href="{% url 'qa_system:displacy2_view' %}" target="_blank" rel="noopener noreferrer">{{model2_name}}</a></th>
-                  
                       <th><a href="{% url 'qa_system:displacy3_view' %}" target="_blank" rel="noopener noreferrer">{{model3_name}}</a></th>
-                  
                     </tr>
-
                     <tr>
-                  
                       <td>
                         <strong>{{answer}}</strong>
                         <br>
@@ -118,30 +140,23 @@
                         <br>   
                         <strong>Score: </strong>{{score}}
                       </td>
-                  
                       <td>
                         {% for entity in entities1 %}
                             <ul><p>{{entity}}</p></ul>                          
                         {% endfor %}                          
                       </td>
-                  
                       <td>
                         {% for entity in entities2 %}
                             <ul><p>{{entity}}</p></ul>                          
                         {% endfor %}                             
                       </td>
-                  
                       <td>
                         {% for entity in entities3 %}
                             <ul><p>{{entity}}</p></ul>                          
                         {% endfor %}                            
                       </td>
-                  
                     </tr>                    
-                  
                   </table>                
-
-
             {% endif %}
         </ul>
         </div>

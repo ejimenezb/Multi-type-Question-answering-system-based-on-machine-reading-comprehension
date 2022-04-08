@@ -1,28 +1,51 @@
 body {
-    font-size: 16px; font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; 
-    padding: 4rem 2rem; 
+    font-size: 16px; 
+    font-family: '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; 
+    padding: 2rem 2rem; 
     direction: ltr;
+    background: hsl(204 100% 5%);
+    /* background: white url("images/playa.jpg") no-repeat fixed; */
 }
 table {
-    /*font-family: arial, sans-serif;*/
     border-collapse: collapse;
-    width: 100%;
+    border-radius: 0.5em;
+    width: 99%;
+    margin: 0px 10px 0px 10px;
+    /* box-sizing: border-box; */
+    /* border: 2px solid #ccc; */
+    background-color: #d6e8ef;
 }
   
 td {
-    border: 1px solid #000000;
+    border: 1px solid hsl(204 100% 5%);
+    /* border: 2px solid #ccc; */
     text-align: left;
     padding: 8px;
 }
 
 th {
-    border: 1px solid #000000;
+    border: 1px solid hsl(204 100% 5%);
+    /* border: 2px solid #ccc; */
     text-align: center;
     padding: 8px;
-    background-color: #91e9cd;
+    background-color: #add3e0;
 }
 
-#information {
+#th_up1 {
+    border-radius: 0.5em 0 0 0;
+    text-align: center;
+    padding: 8px;
+    background-color: #add3e0;
+}
+
+#th_up2 {
+    border-radius: 0 0.5em 0 0;
+    text-align: center;
+    padding: 8px;
+    background-color: #add3e0;
+}
+
+.information {
     width: 100%;
     height: 150px;
     padding: 12px 20px;
@@ -30,22 +53,102 @@ th {
     border: 2px solid #ccc;
     border-radius: 4px;
     background-color: #f8f8f8;
-    resize: none;            
+    resize: none;          
 }
 
-#question {
-    
+.question {
+    width: 40%;
     height: 40px;
     padding-left: 40px; 
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    background-color: #f8f8f8;
     resize: none;   
-    background-image: white url("images/searchicon.png") no-repeat;
-    background-position: 10px 10px;
-    transition-timing-function: width 2s ease-in-out;       
+    background: #f8f8f8 url("images/searchicon.png") no-repeat;
+    background-size: 30px 30px;
+    background-position: 3px 3px;
+    text-justify: auto;
+    /* transition: width 2s ease-in-out;  */
 }  
-#question:focus {
+
+/* .question:focus {
     width: 40%;
-}   
+}    */
+
+.entity_div {
+    line-height: 2.5; 
+    direction: ltr;
+    text-justify: auto;
+}
+
+.entity_mark {
+    background: #43e8a1; 
+    padding: 0.45em 0.6em; 
+    margin: 0 0.25em; 
+    line-height: 1; 
+    border-radius: 0.35em;
+}
+
+.entity_fig {
+    margin-bottom: 1rem
+}
+
+#box_answer {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px; 
+    padding: 10px 10px 20px 15px;
+    margin: 0 0.25em 10px 10px; 
+    /* background: #b3f2d7;  */
+    background: #ffffff; 
+}
+
+#box_question {
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;    
+    padding: 10px 10px 20px 15px;
+    margin: 0 0.25em 10px 10px; 
+    /* background: #7dc3ef;  */
+    background: #ffffff; 
+}
+
+#box_title {
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;      
+    padding: 0.45em 0.6em; 
+    margin: 20px 6px 5px 50px; /*arriba derecha abajo izquierda*/
+    background: #ffffff; 
+}
+
+#box_presentation {
+    text-align: left;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;      
+    padding: 0.45em 0.6em; 
+    margin: 20px 6px 5px 50px; 
+    background: #ffffff; 
+}
+
+#content_presentation {
+    width: 50%;
+    height: 100%;
+    position: left;
+    /* border: 1px solid black; */
+}
+
+#logo {
+    width: auto;
+    height: auto;
+    position: right center;
+    /* float: right; */
+    /* border: 1px solid black; */
+}
+
+.table_invisible {
+    border: 1px solid transparent;
+    background-color: white;
+}
